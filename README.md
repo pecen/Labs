@@ -12,5 +12,6 @@ As opposed to the Sandbox repo, where there are very simple solutions with no fo
 	- Folder: Mvvm Dialog Service
 	- Solution name: DialogsInMvvm.sln
 	- Framework: .Net 6.0
-	- Purpose: To extend the original solution with pure Mvvm and no code-behind. Possibly some extra functionality as well along the way. 
+	- Purpose: To extend the original solution with pure Mvvm and no code-behind. Possibly some extra functionality as well along the way.
+ 	- Outcome: Fill in here what is accomplished and what the outcome became when the lab is finished.
 
