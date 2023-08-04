@@ -10,7 +10,7 @@ As opposed to the Sandbox repo, where there are very simple solutions with no fo
 	- Original solution from Tutorials repo (YouTube tutorial on https://www.youtube.com/watch?v=S8hEjLahNtU&t=885s)
 	- Original solution name - Showing Dialogs in an MVVM Application with a Dialog Service (Prism)
 	- Folder: Mvvm Dialog Service
-	- Solution name: DialogsInMvvm.sln
+	- Solution name: DialogService.sln
 	- Framework: .Net 7.0
 	- Purpose: To extend the original solution with pure Mvvm and no code-behind, and use Prism fully out. Possibly some extra functionality as well along the way.
  	- Outcome: Fill in here what is accomplished and what the outcome became when the lab is finished.
