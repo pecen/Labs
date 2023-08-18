@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrismServicesApp.Core\PrismServicesApp.Core.csproj" />
+    <ProjectReference Include="..\PrismServicesApp.Services.Interfaces\PrismServicesApp.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\PrismServicesApp.Services\PrismServicesApp.Services.csproj" />
+  </ItemGroup>
+</Project>

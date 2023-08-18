@@ -1,0 +1,15 @@
+﻿<UserControl
+    x:Class="PrismServicesApp.UI.Modules.DialogClosureTest.Views.Notification"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel>
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="72"
+            Text="This is a notification" />
+        <Button Command="{Binding CloseWindow}">Close Me</Button>
+    </StackPanel>
+</UserControl>
