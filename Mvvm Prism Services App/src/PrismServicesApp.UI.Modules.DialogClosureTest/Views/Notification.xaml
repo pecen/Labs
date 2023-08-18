@@ -2,7 +2,9 @@
     x:Class="PrismServicesApp.UI.Modules.DialogClosureTest.Views.Notification"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:prism="http://prismlibrary.com/"
+    x:Name="dialogWindow"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
         <TextBlock
@@ -10,6 +12,23 @@
             VerticalAlignment="Center"
             FontSize="72"
             Text="This is a notification" />
-        <Button Command="{Binding CloseWindow}">Close Me</Button>
+        <Button>
+            <!--  The Behavior way of implementing the DialogService event  -->
+            <!--<i:Interaction.Behaviors>
+                <local:CloseDialogBehavior />
+            </i:Interaction.Behaviors>-->
+
+            <!--
+                The EventTrigger way of implementing the DialogService event the MVVM way. Have in mind though that using this approach breaks
+                the MVVM way of doing things by sending the whole DialogWindow as the CommandParameter because the
+                ViewModel layer now references a View-specific object.
+            -->
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding CloseDialogCommand}" CommandParameter="{Binding ElementName=dialogWindow}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            Close Me
+        </Button>
     </StackPanel>
 </UserControl>
