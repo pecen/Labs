@@ -1,11 +1,6 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using PrismServicesApp.Core.Mvvm;
-using PrismServicesApp.Services;
 using PrismServicesApp.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PrismServicesApp.UI.Modules.DialogClosureTest.ViewModels
 {
@@ -17,7 +12,7 @@ namespace PrismServicesApp.UI.Modules.DialogClosureTest.ViewModels
 
         public DialogStartViewModel(IDialogService dialogService)
         {
-            Title = "Prism Dialog Service";
+            Title = "The Dialog Service";
 
             _dialogService = dialogService;
 

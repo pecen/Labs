@@ -1,8 +1,9 @@
-﻿<UserControl x:Class="PrismServicesApp.UI.Modules.DialogClosureTest.Views.DialogStart"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"             
-             prism:ViewModelLocator.AutoWireViewModel="True">
+﻿<UserControl
+    x:Class="PrismServicesApp.UI.Modules.DialogClosureTest.Views.DialogStart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <Button Command="{Binding ShowDialog}">Show Dialog</Button>
     </Grid>

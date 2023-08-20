@@ -2,8 +2,8 @@
     x:Class="PrismServicesApp.UI.Modules.DialogClosureTest.Views.Notification"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:behaviors="clr-namespace:PrismServicesApp.UI.Modules.DialogClosureTest.Behaviors"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:prism="http://prismlibrary.com/"
     x:Name="dialogWindow"
     prism:ViewModelLocator.AutoWireViewModel="True">

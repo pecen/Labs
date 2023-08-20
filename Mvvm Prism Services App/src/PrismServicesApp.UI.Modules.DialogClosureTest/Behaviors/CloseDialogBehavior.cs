@@ -1,54 +1,13 @@
 ﻿using Microsoft.Xaml.Behaviors;
+using PrismServicesApp.Core.Extensions;
 using PrismServicesApp.Services.Views;
-using PrismServicesApp.UI.Modules.DialogClosureTest.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows;
-using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace PrismServicesApp.UI.Modules.DialogClosureTest.Behaviors
 {
     public class CloseDialogBehavior : Behavior<Button>
     {
-        public static T FindAncestor<T>(DependencyObject obj)
-            where T : DependencyObject
-        {
-            if (obj != null)
-            {
-                var dependObj = obj;
-                do
-                {
-                    dependObj = GetParent(dependObj);
-                    if (dependObj is T)
-                        return dependObj as T;
-                }
-                while (dependObj != null);
-            }
-
-            return null;
-        }
-
-        public static DependencyObject GetParent(DependencyObject obj)
-        {
-            if (obj == null)
-                return null;
-            if (obj is ContentElement)
-            {
-                var parent = ContentOperations.GetParent(obj as ContentElement);
-                if (parent != null)
-                    return parent;
-                if (obj is FrameworkContentElement)
-                    return (obj as FrameworkContentElement).Parent;
-                return null;
-            }
-
-            return VisualTreeHelper.GetParent(obj);
-        }
-
         protected override void OnAttached()
         {
             base.OnAttached();
@@ -59,7 +18,8 @@ namespace PrismServicesApp.UI.Modules.DialogClosureTest.Behaviors
         {
             if (AssociatedObject is Button associatedButton)
             {
-                var dialogWindow = FindAncestor<DialogWindow>(associatedButton);
+                var dialogWindow = associatedButton.FindAncestor<DialogWindow>();
+
                 if (dialogWindow != null)
                 {
                     dialogWindow.DialogResult = true;
