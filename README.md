@@ -13,5 +13,5 @@ As opposed to the Sandbox repo, where there are very simple solutions with no fo
 	- Solution name: PrismServicesApp.sln
 	- Framework: .Net 7.0
 	- Purpose: To extend the original solution with pure Mvvm and no code-behind, and use Prism fully out. Possibly some extra functionality as well along the way.
- 	- Outcome: Fill in here what is accomplished and what the outcome became when the lab is finished.
+ 	- Outcome: MVVM fully supported. No Code-behind. Used behaviors instead of triggers to handle the event-triggering, thus the ViewModel is not breaking the MVVM way of doing things by referencing a View-specific object. Uses Prism. 
 
