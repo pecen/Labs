@@ -37,6 +37,32 @@ namespace PrismServicesApp.Core.Extensions
         }
 
         /// <summary>
+        /// Finds the first occurence of the requested parent. Basically does the same
+        /// as the previous method, FindAncestor<T>, but with a different approach. The
+        /// name difference is just because they both have the same signature, and therefore
+        /// can't have the same method name. 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="child"></param>
+        /// <returns></returns>
+        public static T FindParent<T>(this DependencyObject child) where T : DependencyObject
+        {
+            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+            if (parentObject == null)
+            {
+                return null;
+            }
+
+            if (parentObject is T parent)
+            {
+                return parent;
+            }
+
+            return parentObject.FindParent<T>();
+        }
+
+        /// <summary>
         /// Gets the Parent to an object in the visual tree
         /// </summary>
         /// <param name="obj"></param>
