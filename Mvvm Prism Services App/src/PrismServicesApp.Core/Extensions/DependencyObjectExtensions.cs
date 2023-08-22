@@ -45,7 +45,7 @@ namespace PrismServicesApp.Core.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="child"></param>
         /// <returns></returns>
-        public static T FindParent<T>(this DependencyObject child) where T : DependencyObject
+        public static T? FindParent<T>(this DependencyObject child) where T : DependencyObject
         {
             DependencyObject parentObject = VisualTreeHelper.GetParent(child);
 

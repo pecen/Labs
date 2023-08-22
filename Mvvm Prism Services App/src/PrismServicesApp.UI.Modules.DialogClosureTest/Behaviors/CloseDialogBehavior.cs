@@ -18,7 +18,7 @@ namespace PrismServicesApp.UI.Modules.DialogClosureTest.Behaviors
         {
             if (AssociatedObject is Button associatedButton)
             {
-                var dialogWindow = associatedButton.FindAncestor<DialogWindow>();
+                var dialogWindow = associatedButton.FindParent<DialogWindow>();
 
                 if (dialogWindow != null)
                 {
