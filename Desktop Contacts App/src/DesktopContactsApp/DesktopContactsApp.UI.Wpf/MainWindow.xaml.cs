@@ -11,7 +11,8 @@ namespace DesktopContactsApp.UI.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Contact> contacts;
+        public List<Contact> contacts;
+
         public MainWindow()
         {
             InitializeComponent();
