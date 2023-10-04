@@ -11,7 +11,7 @@ namespace PrismServicesApp.Core.Mvvm
         public string Title
         {
             get { return _title; }
-            set { _title = value; }
+            set { SetProperty(ref _title, value); }
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
