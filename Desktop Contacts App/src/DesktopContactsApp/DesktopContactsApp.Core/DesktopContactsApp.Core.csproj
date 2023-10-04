@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
+    <Compile Include="MVVM\ViewModel\BindableBase.cs" />
+    <Compile Include="MVVM\ViewModel\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
