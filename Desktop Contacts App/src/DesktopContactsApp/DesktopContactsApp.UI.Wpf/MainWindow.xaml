@@ -23,8 +23,7 @@
         <ListView
             x:Name="contactsListView"
             Height="250"
-            Margin="0,5,0,0"
-            SelectionChanged="contactsListView_SelectionChanged">
+            Margin="0,5,0,0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -35,6 +34,9 @@
                     <uc:ContactInfoControl Contact="{Binding}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <i:Interaction.Behaviors>
+                <behaviors:SelectionChangedBehavior />
+            </i:Interaction.Behaviors>
         </ListView>
     </StackPanel>
 </Window>
