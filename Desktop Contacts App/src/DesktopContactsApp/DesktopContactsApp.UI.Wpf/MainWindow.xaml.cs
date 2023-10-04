@@ -22,14 +22,6 @@ namespace DesktopContactsApp.UI.Wpf
             ReadDatabase();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NewContactWindow newContactWindow = new NewContactWindow();
-            newContactWindow.ShowDialog();
-
-            ReadDatabase();
-        }
-
         public void ReadDatabase()
         {
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.databasePath))
