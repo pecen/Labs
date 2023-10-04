@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopContactsApp.UI.Wpf", "DesktopContactsApp.UI.Wpf\DesktopContactsApp.UI.Wpf.csproj", "{DAEE03C8-3135-4391-84AB-C876A7A6AF40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopContactsApp", "DesktopContactsApp\DesktopContactsApp.csproj", "{797F5209-CFDF-4ED4-9505-768A5D9B561A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAEE03C8-3135-4391-84AB-C876A7A6AF40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEE03C8-3135-4391-84AB-C876A7A6AF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEE03C8-3135-4391-84AB-C876A7A6AF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEE03C8-3135-4391-84AB-C876A7A6AF40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{797F5209-CFDF-4ED4-9505-768A5D9B561A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{797F5209-CFDF-4ED4-9505-768A5D9B561A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{797F5209-CFDF-4ED4-9505-768A5D9B561A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{797F5209-CFDF-4ED4-9505-768A5D9B561A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE111CA8-C6B4-4751-B88F-DDEEA10776D0}
+	EndGlobalSection
+EndGlobal
