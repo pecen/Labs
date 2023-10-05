@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesktopContactsApp.Core.MVVM.ViewModel
+namespace DesktopContactsApp.Core.MVVM
 {
     public class ViewModelBase : BindableBase
     {

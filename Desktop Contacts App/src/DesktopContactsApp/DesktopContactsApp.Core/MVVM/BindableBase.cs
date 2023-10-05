@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DesktopContactsApp.Core.MVVM.ViewModel
+namespace DesktopContactsApp.Core.MVVM
 {
     public class BindableBase : INotifyPropertyChanged
     {

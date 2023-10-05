@@ -1,4 +1,4 @@
-﻿using DesktopContactsApp.Core.MVVM.ViewModel;
+﻿using DesktopContactsApp.Core.MVVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +9,9 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        public MainWindowViewModel()
+        {
+            Title = "Desktop Contacts App";
+        }
     }
 }

@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="clr-namespace:DesktopContactsApp.UI.WpfMVVM.Controls"
     xmlns:vm="clr-namespace:DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels"
-    Title="MainWindow"
+    Title="{Binding Title}"
     Width="800"
     Height="450"
     mc:Ignorable="d">
