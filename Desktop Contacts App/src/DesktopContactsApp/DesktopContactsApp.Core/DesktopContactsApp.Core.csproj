@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="MVVM\BindableBase.cs" />
+    <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
