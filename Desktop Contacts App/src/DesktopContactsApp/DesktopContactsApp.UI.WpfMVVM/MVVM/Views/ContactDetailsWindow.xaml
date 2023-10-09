@@ -1,12 +1,36 @@
-﻿<Window x:Class="DesktopContactsApp.UI.WpfMVVM.MVVM.Views.ContactDetailsWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DesktopContactsApp.UI.WpfMVVM.MVVM.Views"
-        mc:Ignorable="d"
-        Title="ContactDetailsWindow" Height="450" Width="800">
+﻿<Window
+    x:Class="DesktopContactsApp.UI.WpfMVVM.MVVM.Views.ContactDetailsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:DesktopContactsApp.UI.WpfMVVM.Controls"
+    xmlns:vm="clr-namespace:DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels"
+    Title="{Binding Title}"
+    Width="300"
+    Height="300"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <vm:ContactDetailsWindowViewModel />
+    </Window.DataContext>
     <Grid>
-        
+        <StackPanel Margin="10,0">
+            <uc:ContactEditControl x:Name="contactEditControl" />
+            <Separator Margin="0,15,0,20" />
+            <Button
+                x:Name="updateButton"
+                Margin="0,0,0,5"
+                Background="Green"
+                Command="{Binding UpdateContactCommand}"
+                Content="Update"
+                Foreground="White" />
+            <Button
+                x:Name="deleteButton"
+                Background="Red"
+                Command="{Binding DeleteContactCommand}"
+                Content="Delete"
+                Foreground="White" />
+        </StackPanel>
     </Grid>
 </Window>

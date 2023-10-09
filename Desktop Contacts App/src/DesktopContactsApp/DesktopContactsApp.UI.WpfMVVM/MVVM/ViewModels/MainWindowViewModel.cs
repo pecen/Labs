@@ -1,11 +1,14 @@
-﻿using DesktopContactsApp.Core.MVVM;
+﻿using DesktopContactsApp.Core.Extensions;
+using DesktopContactsApp.Core.MVVM;
 using DesktopContactsApp.UI.WpfMVVM.Models;
+using DesktopContactsApp.UI.WpfMVVM.MVVM.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
 {
@@ -13,7 +16,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
     {
         #region Commands
 
-        public DelegateCommand<ViewModelBase> ShowContactDetailsCommand { get; set; }
+        public DelegateCommand<Contact> ShowContactDetailsCommand { get; set; }
 
         #endregion
 
@@ -49,14 +52,28 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
 
             ContactDetailsWindowVM = new ContactDetailsWindowViewModel();
 
-            ShowContactDetailsCommand = new DelegateCommand<ViewModelBase>(ShowContactDetails);   // (o => CurrentView = ContactDetailsWindowVM);
+            ShowContactDetailsCommand = new DelegateCommand<Contact>(ShowContactDetails);   // (o => CurrentView = ContactDetailsWindowVM);
 
             ReadDatabase();
         }
 
-        private void ShowContactDetails(ViewModelBase obj)
+        private void ShowContactDetails(object obj)
         {
-            CurrentView = obj;
+            if (obj is Contact selectedContact)
+            {
+                ContactDetailsWindow contactDetailsWindow = new ContactDetailsWindow();
+
+                if (contactDetailsWindow.DataContext is ContactDetailsWindowViewModel vm)
+                {
+                    vm.Name = selectedContact.Name;
+                    vm.Email = selectedContact.Email;
+                    vm.Phone = selectedContact.Phone;
+
+                    contactDetailsWindow.ShowDialog();
+                }
+
+                ReadDatabase();
+            }
         }
 
         public void ReadDatabase()

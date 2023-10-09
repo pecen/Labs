@@ -55,7 +55,7 @@
                 </i:Interaction.Behaviors>-->
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding ShowContactDetailsCommand}" CommandParameter="{StaticResource ContactDetailsWindowVM}" />
+                        <i:InvokeCommandAction Command="{Binding ShowContactDetailsCommand}" CommandParameter="{Binding ElementName=contactsListView, Path=SelectedItem}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ListView>
