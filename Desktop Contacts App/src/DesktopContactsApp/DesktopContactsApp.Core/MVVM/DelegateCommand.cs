@@ -3,10 +3,44 @@ using System.Windows.Input;
 
 namespace DesktopContactsApp.Core.MVVM
 {
+    public class RelayCommand : ICommand
+    {
+        private Action<object> _execute;
+        private Func<object, bool> _canExecute;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        {
+            _execute = execute;
+            _canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute == null || _canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            _execute(parameter);
+        }
+    }
+
     public class DelegateCommand<T> : ICommand
     {
         private readonly Func<T, bool> _canExecute;
         private readonly Action<T> _execute;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public DelegateCommand(Action<T> executeMethod)
            //: this(executeMethod, null)
@@ -33,12 +67,6 @@ namespace DesktopContactsApp.Core.MVVM
         public void Execute(object parameter)
         {
             _execute((T)parameter);
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
         }
     }
 }
