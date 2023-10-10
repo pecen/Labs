@@ -17,12 +17,6 @@
         <vm:MainWindowViewModel />
     </Window.DataContext>
 
-    <Window.Resources>
-        <ResourceDictionary>
-            <vm:ContactDetailsWindowViewModel x:Key="ContactDetailsWindowVM" />
-        </ResourceDictionary>
-    </Window.Resources>
-
     <Grid>
         <StackPanel Margin="10">
             <Button Content="New contact">

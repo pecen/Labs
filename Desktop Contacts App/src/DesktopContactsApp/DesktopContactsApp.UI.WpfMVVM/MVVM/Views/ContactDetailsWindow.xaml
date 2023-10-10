@@ -6,10 +6,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="clr-namespace:DesktopContactsApp.UI.WpfMVVM.Controls"
     xmlns:vm="clr-namespace:DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels"
+    x:Name="contactDetails"
     Title="{Binding Title}"
     Width="300"
     Height="300"
-    WindowStartupLocation="CenterScreen"
+    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Window.DataContext>
         <vm:ContactDetailsWindowViewModel />
@@ -23,12 +24,14 @@
                 Margin="0,0,0,5"
                 Background="Green"
                 Command="{Binding UpdateContactCommand}"
+                CommandParameter="{Binding ElementName=contactDetails}"
                 Content="Update"
                 Foreground="White" />
             <Button
                 x:Name="deleteButton"
                 Background="Red"
                 Command="{Binding DeleteContactCommand}"
+                CommandParameter="{Binding ElementName=contactDetails}"
                 Content="Delete"
                 Foreground="White" />
         </StackPanel>

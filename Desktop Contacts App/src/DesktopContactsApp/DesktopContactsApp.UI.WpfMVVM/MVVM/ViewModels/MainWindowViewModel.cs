@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
@@ -29,14 +30,15 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
             private set { SetProperty(ref _contacts, value); }
         }
 
-        private ViewModelBase _currentView;
-
-        public ViewModelBase CurrentView
-        {
-            get { return _currentView; }
-            set { _currentView = value; }
-        }
-
+        //private object _currentView;
+        //public object CurrentView
+        //{
+        //    get { return _currentView; }
+        //    set
+        //    {
+        //        SetProperty(ref _currentView, value);
+        //    }
+        //}
 
         #endregion
 
@@ -52,27 +54,32 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
 
             ContactDetailsWindowVM = new ContactDetailsWindowViewModel();
 
-            ShowContactDetailsCommand = new DelegateCommand<Contact>(ShowContactDetails);   // (o => CurrentView = ContactDetailsWindowVM);
+            ShowContactDetailsCommand = new DelegateCommand<Contact>(ShowContactDetails);      //   o => { CurrentView = ContactDetailsWindowVM; });
 
             ReadDatabase();
         }
 
-        private void ShowContactDetails(object obj)
+        private void ShowContactDetails(Contact contact)
         {
-            if (obj is Contact selectedContact)
+            if (contact is Contact selectedContact)
             {
                 ContactDetailsWindow contactDetailsWindow = new ContactDetailsWindow();
 
                 if (contactDetailsWindow.DataContext is ContactDetailsWindowViewModel vm)
                 {
+                    vm.Id = selectedContact.Id;
                     vm.Name = selectedContact.Name;
                     vm.Email = selectedContact.Email;
                     vm.Phone = selectedContact.Phone;
+                    
+                    vm.IsDirty = false;
+                    contactDetailsWindow.ShowDialog();                    
 
-                    contactDetailsWindow.ShowDialog();
+                    if (vm.IsDirty)  // == true && contactDetailsWindow.DialogResult == true)
+                    {
+                        ReadDatabase();
+                    }
                 }
-
-                ReadDatabase();
             }
         }
 
@@ -83,8 +90,8 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.databasePath))
             {
                 conn.CreateTable<Contact>();
-                contacts = (conn.Table<Contact>()
-                            .ToList())
+                contacts = conn.Table<Contact>()
+                            .ToList()
                             .OrderBy(c => c.Name); 
             }
 

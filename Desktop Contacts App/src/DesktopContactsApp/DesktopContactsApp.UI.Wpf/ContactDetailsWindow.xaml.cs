@@ -9,14 +9,16 @@ namespace DesktopContactsApp.UI.Wpf
     /// </summary>
     public partial class ContactDetailsWindow : Window
     {
-        Contact contact;
+        Contact _contact;
+        bool _isDirty;
+
         public ContactDetailsWindow(Contact contact)
         {
             InitializeComponent();
 
             Owner = Application.Current.MainWindow;
 
-            this.contact = contact;
+            _contact = contact;
 
             contactEditControl.nameTextBox.Text = contact.Name;
             contactEditControl.phoneNumberTextBox.Text = contact.Phone;
@@ -25,17 +27,25 @@ namespace DesktopContactsApp.UI.Wpf
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            contact.Name = contactEditControl.nameTextBox.Text;
-            contact.Phone = contactEditControl.phoneNumberTextBox.Text;
-            contact.Email = contactEditControl.emailTextBox.Text;
+            if(_contact.Name == contactEditControl.nameTextBox.Text
+                && _contact.Phone == contactEditControl.phoneNumberTextBox.Text
+                && _contact.Email == contactEditControl.emailTextBox.Text)
+            {
+                DialogResult = false;
+                return;
+            }
+
+            _contact.Name = contactEditControl.nameTextBox.Text;
+            _contact.Phone = contactEditControl.phoneNumberTextBox.Text;
+            _contact.Email = contactEditControl.emailTextBox.Text;
 
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
                 connection.CreateTable<Contact>();
-                connection.Update(contact);
+                connection.Update(_contact);
             }
 
-            Close();
+            DialogResult = true;
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
@@ -43,7 +53,7 @@ namespace DesktopContactsApp.UI.Wpf
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
                 connection.CreateTable<Contact>();
-                connection.Delete(contact);
+                connection.Delete(_contact);
             }
 
             Close();

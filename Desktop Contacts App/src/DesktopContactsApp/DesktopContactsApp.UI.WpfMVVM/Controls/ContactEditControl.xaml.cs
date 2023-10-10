@@ -21,9 +21,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.Controls
 
         private static void SetText(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ContactEditControl control = d as ContactEditControl;
-
-            if (control != null)
+            if (d is ContactEditControl control)
             {
                 control.nameTextBox.Text = (e.NewValue as Contact).Name;
                 control.emailTextBox.Text = (e.NewValue as Contact).Email;

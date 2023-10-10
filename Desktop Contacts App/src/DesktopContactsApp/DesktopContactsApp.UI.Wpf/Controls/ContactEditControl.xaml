@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel>
             <Label
-                Content="Name" 
+                Content="Name"
                 FontStyle="Italic"
                 FontWeight="SemiBold" />
             <TextBox x:Name="nameTextBox" Margin="0,0,0,10" />

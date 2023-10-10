@@ -22,6 +22,8 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.Views
         public ContactDetailsWindow()
         {
             InitializeComponent();
+
+            Owner = Application.Current.MainWindow;
         }
     }
 }

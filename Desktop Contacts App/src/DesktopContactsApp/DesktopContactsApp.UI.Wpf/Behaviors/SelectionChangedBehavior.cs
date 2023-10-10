@@ -34,7 +34,10 @@ namespace DesktopContactsApp.UI.Wpf.Behaviors
                         ContactDetailsWindow contactDetailsWindow = new ContactDetailsWindow(selectedContact);
                         contactDetailsWindow.ShowDialog();
 
-                        mainWindow.ReadDatabase();
+                        if (contactDetailsWindow.DialogResult == true)
+                        {
+                            associatedListView.Items.Refresh();
+                        }
                     }
                 }
             }

@@ -8,9 +8,9 @@
     <Application.Resources>
         <!--#region The View/ViewModel Bindings-->
 
-        <DataTemplate DataType="{x:Type vm:ContactDetailsWindowViewModel}">
+        <!--<DataTemplate DataType="{x:Type vm:ContactDetailsWindowViewModel}">
             <views:ContactDetailsWindow />
-        </DataTemplate>
+        </DataTemplate>-->
         
         <!--#endregion-->
     </Application.Resources>
