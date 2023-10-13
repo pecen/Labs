@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopContactsApp.Core", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopContactsApp.UI.WpfMVVM", "DesktopContactsApp.UI.WpfMVVM\DesktopContactsApp.UI.WpfMVVM.csproj", "{4EC182D1-CCC7-43B8-9B22-8E4B90953AD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopContactsApp.Services", "DesktopContactsApp.Services\DesktopContactsApp.Services.csproj", "{0F8ADD72-8E25-45CE-9D00-5ECAA1DB0957}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4EC182D1-CCC7-43B8-9B22-8E4B90953AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EC182D1-CCC7-43B8-9B22-8E4B90953AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EC182D1-CCC7-43B8-9B22-8E4B90953AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F8ADD72-8E25-45CE-9D00-5ECAA1DB0957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F8ADD72-8E25-45CE-9D00-5ECAA1DB0957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F8ADD72-8E25-45CE-9D00-5ECAA1DB0957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F8ADD72-8E25-45CE-9D00-5ECAA1DB0957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

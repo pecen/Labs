@@ -26,9 +26,9 @@
                 </i:Interaction.Behaviors>
             </Button>
             <TextBox Margin="0,5,0,5">
-                <!--<i:Interaction.Behaviors>
+                <i:Interaction.Behaviors>
                     <behaviors:TextChangedBehavior />
-                </i:Interaction.Behaviors>-->
+                </i:Interaction.Behaviors>
             </TextBox>
             <ListView
                 x:Name="contactsListView"

@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Behaviors\NewContactBehavior.cs" />
     <Compile Include="Behaviors\SelectionChangedBehavior.cs" />
+    <Compile Include="Behaviors\TextChangedBehavior.cs" />
     <Compile Include="Controls\ContactEditControl.xaml.cs">
       <DependentUpon>ContactEditControl.xaml</DependentUpon>
     </Compile>
