@@ -1,13 +1,8 @@
-﻿using DesktopContactsApp.UI.Wpf.Models;
+﻿using DesktopContactsApp.Core.Extensions;
+using DesktopContactsApp.UI.Wpf.Models;
 using Microsoft.Xaml.Behaviors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using DesktopContactsApp.Core.Extensions;
 
 namespace DesktopContactsApp.UI.Wpf.Behaviors
 {

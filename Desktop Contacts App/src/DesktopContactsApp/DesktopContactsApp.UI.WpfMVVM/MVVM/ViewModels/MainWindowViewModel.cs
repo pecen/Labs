@@ -1,15 +1,12 @@
-﻿using DesktopContactsApp.Core.Extensions;
-using DesktopContactsApp.Core.MVVM;
+﻿using DesktopContactsApp.Core.MVVM;
 using DesktopContactsApp.UI.WpfMVVM.Models;
+
+// This is totally wrong since a VM should not know about its View
+// This is just for demonstrating purposes
 using DesktopContactsApp.UI.WpfMVVM.MVVM.Views;
-using System;
-using System.Collections.Generic;
+
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
 {
@@ -27,7 +24,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
         public ObservableCollection<Contact> Contacts
         {
             get { return _contacts; }
-            private set { SetProperty(ref _contacts, value); }
+            set { SetProperty(ref _contacts, value); }
         }
 
         //private object _currentView;
@@ -44,7 +41,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
 
         #region ViewModels
 
-        public ContactDetailsWindowViewModel ContactDetailsWindowVM { get; set; }
+        //public ContactDetailsWindowViewModel ContactDetailsWindowVM { get; set; }
 
         #endregion
 
@@ -52,7 +49,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
         {
             Title = "Desktop Contacts App";
 
-            ContactDetailsWindowVM = new ContactDetailsWindowViewModel();
+            //ContactDetailsWindowVM = new ContactDetailsWindowViewModel();
 
             ShowContactDetailsCommand = new DelegateCommand<Contact>(ShowContactDetails);      //   o => { CurrentView = ContactDetailsWindowVM; });
 
@@ -71,9 +68,10 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
                     vm.Name = selectedContact.Name;
                     vm.Email = selectedContact.Email;
                     vm.Phone = selectedContact.Phone;
-                    
+
                     vm.IsDirty = false;
-                    contactDetailsWindow.ShowDialog();                    
+
+                    contactDetailsWindow.ShowDialog();
 
                     if (vm.IsDirty)  // == true && contactDetailsWindow.DialogResult == true)
                     {
@@ -92,7 +90,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
                 conn.CreateTable<Contact>();
                 contacts = conn.Table<Contact>()
                             .ToList()
-                            .OrderBy(c => c.Name); 
+                            .OrderBy(c => c.Name);
             }
 
             if (contacts != null)

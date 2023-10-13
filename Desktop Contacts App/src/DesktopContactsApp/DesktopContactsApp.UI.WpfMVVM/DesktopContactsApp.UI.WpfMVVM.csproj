@@ -95,6 +95,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Behaviors\NewContactBehavior.cs" />
+    <Compile Include="Behaviors\SelectionChangedBehavior.cs" />
     <Compile Include="Controls\ContactEditControl.xaml.cs">
       <DependentUpon>ContactEditControl.xaml</DependentUpon>
     </Compile>
@@ -104,6 +106,7 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="MVVM\ViewModels\ContactDetailsWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\NewContactWindowViewModel.cs" />
     <Compile Include="MVVM\Views\ContactDetailsWindow.xaml.cs">
       <DependentUpon>ContactDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -111,8 +114,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\Views\NewContactWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\Views\NewContactWindow.xaml.cs">
+      <DependentUpon>NewContactWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

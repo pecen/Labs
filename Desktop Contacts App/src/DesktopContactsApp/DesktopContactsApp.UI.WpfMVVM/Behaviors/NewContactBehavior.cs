@@ -1,9 +1,14 @@
 ﻿using DesktopContactsApp.Core.Extensions;
+using DesktopContactsApp.UI.WpfMVVM.Models;
+using DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels;
+using DesktopContactsApp.UI.WpfMVVM.MVVM.Views;
 using Microsoft.Xaml.Behaviors;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace DesktopContactsApp.UI.Wpf.Behaviors
+namespace DesktopContactsApp.UI.WpfMVVM.Behaviors
 {
     public class NewContactBehavior : Behavior<Button>
     {
@@ -24,8 +29,11 @@ namespace DesktopContactsApp.UI.Wpf.Behaviors
                     NewContactWindow newContactWindow = new NewContactWindow();
                     newContactWindow.ShowDialog();
 
-
-                    mainWindow.ReadDatabase();
+                    if (newContactWindow.DialogResult == true)
+                    {
+                        var mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
+                        mainWindowVM.ReadDatabase();
+                    }
                 }
             }
         }

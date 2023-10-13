@@ -2,13 +2,7 @@
 using DesktopContactsApp.UI.WpfMVVM.Models;
 using DesktopContactsApp.UI.WpfMVVM.MVVM.Views;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Navigation;
 
 namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
 {
@@ -47,7 +41,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
             set { IsDirty = SetProperty(ref _phone, value); }
         }
 
-        private Contact Contact
+        public Contact Contact
         {
             get
             {
@@ -63,13 +57,6 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
 
         public bool IsDirty { get; set; } = false;
 
-        //private Contact _contact = new Contact();
-        //public Contact Contact
-        //{
-        //    get => _contact;
-        //    set { IsDirty = SetProperty(ref _contact, value); }
-        //}
-
         #endregion
 
         public ContactDetailsWindowViewModel()
@@ -80,16 +67,16 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
                 o =>
                 {
                     return IsDirty
-                        && !string.IsNullOrEmpty(Contact.Name)
-                        && !string.IsNullOrEmpty(Contact.Email)
-                        && !string.IsNullOrEmpty(Contact.Phone);
+                        && !string.IsNullOrEmpty(Name)
+                        && !string.IsNullOrEmpty(Email)
+                        && !string.IsNullOrEmpty(Phone);
                 });
             DeleteContactCommand = new DelegateCommand<Window>(DeleteContact,
                 o =>
                 {
-                    return !string.IsNullOrEmpty(Contact.Name)
-                        || !string.IsNullOrEmpty(Contact.Email)
-                        || !string.IsNullOrEmpty(Contact.Phone);
+                    return !string.IsNullOrEmpty(Name)
+                        || !string.IsNullOrEmpty(Email)
+                        || !string.IsNullOrEmpty(Phone);
                 });
         }
 
