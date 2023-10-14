@@ -1,4 +1,5 @@
-﻿using DesktopContactsApp.Core.MVVM;
+﻿using DesktopContactsApp.Core.Extensions;
+using DesktopContactsApp.Core.MVVM;
 using DesktopContactsApp.UI.WpfMVVM.Models;
 using DesktopContactsApp.UI.WpfMVVM.MVVM.Views;
 using SQLite;
@@ -84,6 +85,13 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
         {
             if (window is ContactDetailsWindow dialogWindow)
             {
+                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                {
+                    connection.CreateTable<Contact>();
+                    int rows = connection.Delete(Contact);
+                }
+
+                dialogWindow.GetViewModel<ContactDetailsWindowViewModel>().IsDirty = true;
                 dialogWindow.DialogResult = true;
             }
         }
@@ -94,7 +102,6 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
             {
                 if (!IsDirty)
                 {
-                    dialogWindow.DialogResult = false;
                     return;
                 }
 

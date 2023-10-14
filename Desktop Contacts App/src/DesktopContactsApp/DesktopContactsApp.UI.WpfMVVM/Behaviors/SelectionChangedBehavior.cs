@@ -44,14 +44,15 @@ namespace DesktopContactsApp.UI.WpfMVVM.Behaviors
 
                             if (!vm.IsDirty)
                             {
+                                associatedListView.SelectedItem = null;
                                 return;
                             }
 
-                            using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
-                            {
-                                connection.CreateTable<Contact>();
-                                connection.Update(vm.Contact);
-                            }
+                            //using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                            //{
+                            //    connection.CreateTable<Contact>();
+                            //    connection.Update(vm.Contact);
+                            //}
 
                             if (dialogWindow.DialogResult == true)
                             {
