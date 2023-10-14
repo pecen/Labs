@@ -89,9 +89,13 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
                 {
                     connection.CreateTable<Contact>();
                     int rows = connection.Delete(Contact);
+
+                    if (rows == 1)
+                    {
+                        dialogWindow.GetViewModel<ContactDetailsWindowViewModel>().IsDirty = true;
+                    }
                 }
 
-                dialogWindow.GetViewModel<ContactDetailsWindowViewModel>().IsDirty = true;
                 dialogWindow.DialogResult = true;
             }
         }

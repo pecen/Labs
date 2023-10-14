@@ -48,16 +48,9 @@ namespace DesktopContactsApp.UI.WpfMVVM.Behaviors
                                 return;
                             }
 
-                            //using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
-                            //{
-                            //    connection.CreateTable<Contact>();
-                            //    connection.Update(vm.Contact);
-                            //}
-
                             if (dialogWindow.DialogResult == true)
                             {
-                                var mainWindowVm = mainWindow.DataContext as MainWindowViewModel;
-                                mainWindowVm.ReadDatabase();
+                                mainWindow.GetViewModel<MainWindowViewModel>().ReadDatabase();
                             }
                         }
                     }

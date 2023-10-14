@@ -27,29 +27,11 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
             set { SetProperty(ref _contacts, value); }
         }
 
-        //private object _currentView;
-        //public object CurrentView
-        //{
-        //    get { return _currentView; }
-        //    set
-        //    {
-        //        SetProperty(ref _currentView, value);
-        //    }
-        //}
-
-        #endregion
-
-        #region ViewModels
-
-        //public ContactDetailsWindowViewModel ContactDetailsWindowVM { get; set; }
-
         #endregion
 
         public MainWindowViewModel()
         {
             Title = "Desktop Contacts App";
-
-            //ContactDetailsWindowVM = new ContactDetailsWindowViewModel();
 
             ShowContactDetailsCommand = new DelegateCommand<Contact>(ShowContactDetails);      //   o => { CurrentView = ContactDetailsWindowVM; });
 

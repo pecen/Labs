@@ -31,8 +31,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.Behaviors
 
                     if (newContactWindow.DialogResult == true)
                     {
-                        var mainWindowVM = mainWindow.DataContext as MainWindowViewModel;
-                        mainWindowVM.ReadDatabase();
+                        mainWindow.GetViewModel<MainWindowViewModel>().ReadDatabase();
                     }
                 }
             }
