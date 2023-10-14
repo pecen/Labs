@@ -14,7 +14,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
     {
         #region Commands
 
-        public DelegateCommand<Contact> ShowContactDetailsCommand { get; set; }
+        //public DelegateCommand<Contact> ShowContactDetailsCommand { get; set; }
 
         #endregion
 
@@ -38,30 +38,30 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
             ReadDatabase();
         }
 
-        private void ShowContactDetails(Contact contact)
-        {
-            if (contact is Contact selectedContact)
-            {
-                ContactDetailsWindow contactDetailsWindow = new ContactDetailsWindow();
+        //private void ShowContactDetails(Contact contact)
+        //{
+        //    if (contact is Contact selectedContact)
+        //    {
+        //        ContactDetailsWindow contactDetailsWindow = new ContactDetailsWindow();
 
-                if (contactDetailsWindow.DataContext is ContactDetailsWindowViewModel vm)
-                {
-                    vm.Id = selectedContact.Id;
-                    vm.Name = selectedContact.Name;
-                    vm.Email = selectedContact.Email;
-                    vm.Phone = selectedContact.Phone;
+        //        if (contactDetailsWindow.DataContext is ContactDetailsWindowViewModel vm)
+        //        {
+        //            vm.Id = selectedContact.Id;
+        //            vm.Name = selectedContact.Name;
+        //            vm.Email = selectedContact.Email;
+        //            vm.Phone = selectedContact.Phone;
 
-                    vm.IsDirty = false;
+        //            vm.IsDirty = false;
 
-                    contactDetailsWindow.ShowDialog();
+        //            contactDetailsWindow.ShowDialog();
 
-                    if (vm.IsDirty)  // == true && contactDetailsWindow.DialogResult == true)
-                    {
-                        ReadDatabase();
-                    }
-                }
-            }
-        }
+        //            if (vm.IsDirty)  // == true && contactDetailsWindow.DialogResult == true)
+        //            {
+        //                ReadDatabase();
+        //            }
+        //        }
+        //    }
+        //}
 
         public void ReadDatabase()
         {

@@ -115,7 +115,7 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
                     int rows = connection.Update(Contact);
                 }
 
-                dialogWindow.DialogResult = true;
+                //dialogWindow.DialogResult = true;
             }
         }
     }
