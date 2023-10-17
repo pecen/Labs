@@ -30,32 +30,32 @@ namespace DesktopContactsApp.Services
             ShowDialogInternal(type, callback, typeof(TViewModel));
         }
 
-        private static void ShowDialogInternal(Type type, Action<string> callback, Type? vmType)
+        private static void ShowDialogInternal(Type type, Action<string> callback, Type vmType)
         {
-            var dialog = new DialogWindow();
+            //var dialog = new DialogWindow();
 
-            EventHandler closeEventHandler = null;
-            closeEventHandler = (s, e) =>
-            {
-                callback(dialog.DialogResult.ToString());
-                dialog.Closed -= closeEventHandler;
-            };
+            //EventHandler closeEventHandler = null;
+            //closeEventHandler = (s, e) =>
+            //{
+            //    callback(dialog.DialogResult.ToString());
+            //    dialog.Closed -= closeEventHandler;
+            //};
 
-            dialog.Closed += closeEventHandler;
+            //dialog.Closed += closeEventHandler;
 
-            //var type = Type.GetType($"DialogsInMvvm.{name}");
+            ////var type = Type.GetType($"DialogsInMvvm.{name}");
 
-            var content = Activator.CreateInstance(type);
+            //var content = Activator.CreateInstance(type);
 
-            if (vmType != null)
-            {
-                var vm = Activator.CreateInstance(vmType);
-                (content as FrameworkElement).DataContext = vm;
-            }
+            //if (vmType != null)
+            //{
+            //    var vm = Activator.CreateInstance(vmType);
+            //    (content as FrameworkElement).DataContext = vm;
+            //}
 
-            dialog.Content = content;
+            //dialog.Content = content;
 
-            dialog.ShowDialog();
+            //dialog.ShowDialog();
         }
     }
 }
