@@ -1,4 +1,5 @@
 ﻿using DesktopContactsApp.Core.Extensions;
+using DesktopContactsApp.Services;
 using DesktopContactsApp.UI.WpfService.Models;
 using DesktopContactsApp.UI.WpfService.MVVM.ViewModels;
 using DesktopContactsApp.UI.WpfService.MVVM.Views;
@@ -29,30 +30,37 @@ namespace DesktopContactsApp.UI.WpfService.Behaviors
 
                     if (selectedContact != null)
                     {
-                        ContactDetailsWindow dialogWindow = new ContactDetailsWindow(); // selectedContact);
+                        DialogService dialogService = new DialogService();
 
-                        if (dialogWindow.DataContext is ContactDetailsWindowViewModel vm)
+                        dialogService.ShowDialog<ContactDetailsWindowViewModel>(result =>
                         {
-                            vm.Id = selectedContact.Id;
-                            vm.Name = selectedContact.Name;
-                            vm.Email = selectedContact.Email;
-                            vm.Phone = selectedContact.Phone;
+                            var test = result;
+                        });
 
-                            vm.IsDirty = false;
+                        //ContactDetailsWindow dialogWindow = new ContactDetailsWindow(); // selectedContact);
 
-                            dialogWindow.ShowDialog();
+                        //if (dialogWindow.DataContext is ContactDetailsWindowViewModel vm)
+                        //{
+                        //    vm.Id = selectedContact.Id;
+                        //    vm.Name = selectedContact.Name;
+                        //    vm.Email = selectedContact.Email;
+                        //    vm.Phone = selectedContact.Phone;
 
-                            if (!vm.IsDirty)
-                            {
-                                associatedListView.SelectedItem = null;
-                                return;
-                            }
+                        //    vm.IsDirty = false;
 
-                            if (dialogWindow.DialogResult == true)
-                            {
-                                mainWindow.GetViewModel<MainWindowViewModel>().ReadDatabase();
-                            }
-                        }
+                        //    dialogWindow.ShowDialog();
+
+                        //    if (!vm.IsDirty)
+                        //    {
+                        //        associatedListView.SelectedItem = null;
+                        //        return;
+                        //    }
+
+                        //    if (dialogWindow.DialogResult == true)
+                        //    {
+                        //        mainWindow.GetViewModel<MainWindowViewModel>().ReadDatabase();
+                        //    }
+                        //}
                     }
                 }
             }
