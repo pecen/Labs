@@ -30,7 +30,7 @@ namespace DesktopContactsApp.Services
             ShowDialogInternal(type, callback, typeof(TViewModel));
         }
 
-        private static void ShowDialogInternal(Type type, Action<string> callback, Type? vmType)
+        private static void ShowDialogInternal(Type type, Action<string> callback, Type vmType)
         {
             var dialog = new DialogWindow();
 
