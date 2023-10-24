@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DesktopContactsApp.UI.WpfService
+namespace DesktopContactsApp.UI.WpfService.MVVM.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

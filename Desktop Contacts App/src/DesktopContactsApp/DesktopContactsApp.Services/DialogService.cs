@@ -16,12 +16,12 @@ namespace DesktopContactsApp.Services
             _mappings.Add(typeof(TViewModel), typeof(TView));
         }
 
-        public void ShowDialog(string name, Action<string> callback)
-        {
-            var type = Type.GetType($"DialogsInMvvm.{name}");
+        //public void ShowDialog(string name, Action<string> callback)
+        //{
+        //    var type = Type.GetType($"DialogsInMvvm.{name}");
 
-            ShowDialogInternal(type, callback, null);
-        }
+        //    ShowDialogInternal(type, callback, null);
+        //}
 
         public void ShowDialog<TViewModel>(Action<string> callback)
         {
@@ -32,7 +32,7 @@ namespace DesktopContactsApp.Services
 
         private static void ShowDialogInternal(Type type, Action<string> callback, Type vmType)
         {
-            var dialog = new DialogWindow();
+            var dialog = Activator.CreateInstance(type) as Window;
 
             EventHandler closeEventHandler = null;
             closeEventHandler = (s, e) =>
@@ -43,19 +43,46 @@ namespace DesktopContactsApp.Services
 
             dialog.Closed += closeEventHandler;
 
-            //var type = Type.GetType($"DialogsInMvvm.{name}");
-
-            var content = Activator.CreateInstance(type);
-
-            if (vmType != null)
+            if(vmType != null)
             {
                 var vm = Activator.CreateInstance(vmType);
-                (content as FrameworkElement).DataContext = vm;
+                dialog.DataContext = vm;
             }
 
-            dialog.Content = content;
-
             dialog.ShowDialog();
+
+            // --- //
+
+
+            //var dialog = new DialogWindow();
+
+            //EventHandler closeEventHandler = null;
+            //closeEventHandler = (s, e) =>
+            //{
+            //    callback(dialog.DialogResult.ToString());
+            //    dialog.Closed -= closeEventHandler;
+            //};
+
+            //dialog.Closed += closeEventHandler;
+
+            ////var type = Type.GetType($"DialogsInMvvm.{name}");
+
+            //var content = Activator.CreateInstance(type);
+
+            //if (vmType != null)
+            //{
+            //    var vm = Activator.CreateInstance(vmType);
+            //    (content as FrameworkElement).DataContext = vm;
+            //}
+
+            //dialog.Content = content;
+
+            //dialog.ShowDialog();
+        }
+
+        private static void Dialog_Closed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
