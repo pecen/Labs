@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesktopContactsApp.Services.ViewModels
 {
-    internal class DialogWindowBaseViewModel
+    public class DialogWindowBaseViewModel
     {
     }
 }

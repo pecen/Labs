@@ -19,18 +19,18 @@ namespace DesktopContactsApp.UI.WpfService.Behaviors
         {
             if (AssociatedObject is Button associatedButton)
             {
-                var mainWindow = associatedButton.FindParent<MainWindow>();
+                //var mainWindow = associatedButton.FindParent<MainWindow>();
 
-                if (mainWindow != null)
-                {
-                    NewContactWindow newContactWindow = new NewContactWindow();
-                    newContactWindow.ShowDialog();
+                //if (mainWindow != null)
+                //{
+                //    NewContactWindow newContactWindow = new NewContactWindow();
+                //    newContactWindow.ShowDialog();
 
-                    if (newContactWindow.DialogResult == true)
-                    {
-                        mainWindow.GetViewModel<MainWindowViewModel>().ReadDatabase();
-                    }
-                }
+                //    if (newContactWindow.DialogResult == true)
+                //    {
+                //        mainWindow.GetViewModel<MainWindowViewModel>().ReadDatabase();
+                //    }
+                //}
             }
         }
 

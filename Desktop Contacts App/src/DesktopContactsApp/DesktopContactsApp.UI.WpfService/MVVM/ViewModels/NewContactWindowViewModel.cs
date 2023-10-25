@@ -58,34 +58,34 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
 
         private void SaveContact(Window window)
         {
-            if (window is NewContactWindow dialogWindow)
-            {
-                if (dialogWindow.contactEditControl is ContactEditControl)
-                {
-                    Contact contact = new Contact()
-                    {
-                        Name = Name,
-                        Email = Email,
-                        Phone = Phone
-                    };
+            //if (window is NewContactWindow dialogWindow)
+            //{
+            //    if (dialogWindow.contactEditControl is ContactEditControl)
+            //    {
+            //        Contact contact = new Contact()
+            //        {
+            //            Name = Name,
+            //            Email = Email,
+            //            Phone = Phone
+            //        };
 
-                    using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
-                    {
-                        connection.CreateTable<Contact>();
-                        var i = connection.Insert(contact);
+            //        using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            //        {
+            //            connection.CreateTable<Contact>();
+            //            var i = connection.Insert(contact);
 
-                        if (i == 1)
-                        {
-                            Id = contact.Id;
-                            dialogWindow.DialogResult = true;
-                        }
-                        else
-                        {
-                            dialogWindow.DialogResult = false;
-                        }
-                    }
-                }
-            }
+            //            if (i == 1)
+            //            {
+            //                Id = contact.Id;
+            //                dialogWindow.DialogResult = true;
+            //            }
+            //            else
+            //            {
+            //                dialogWindow.DialogResult = false;
+            //            }
+            //        }
+            //    }
+            //}
         }
     }
 }

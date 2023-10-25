@@ -1,4 +1,5 @@
 ﻿using DesktopContactsApp.Core.MVVM;
+using DesktopContactsApp.Services;
 using DesktopContactsApp.UI.WpfService.Models;
 
 // This is totally wrong since a VM should not know about its View
@@ -12,6 +13,8 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private readonly IDialogService _dialogService;
+
         #region Commands
 
         public DelegateCommand<Contact> ShowContactDetailsCommand { get; set; }
@@ -33,6 +36,8 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
         {
             Title = "Desktop Contacts App";
 
+            _dialogService = new DialogService();
+
             ShowContactDetailsCommand = new DelegateCommand<Contact>(ShowContactDetails);      //   o => { CurrentView = ContactDetailsWindowVM; });
 
             ReadDatabase();
@@ -42,24 +47,34 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
         {
             if (contact is Contact selectedContact)
             {
-                ContactDetailsWindow contactDetailsWindow = new ContactDetailsWindow();
-
-                if (contactDetailsWindow.DataContext is ContactDetailsWindowViewModel vm)
+                var vm = new ContactDetailsWindowViewModel
                 {
-                    vm.Id = selectedContact.Id;
-                    vm.Name = selectedContact.Name;
-                    vm.Email = selectedContact.Email;
-                    vm.Phone = selectedContact.Phone;
+                    Id = selectedContact.Id,
+                    Name = selectedContact.Name,
+                    Email = selectedContact.Email,
+                    Phone = selectedContact.Phone,
+                };
 
-                    vm.IsDirty = false;
+                _dialogService.ShowDialog<ContactDetailsWindowViewModel>(result => { var test = result; });
 
-                    contactDetailsWindow.ShowDialog();
+                //ContactDetailsWindow contactDetailsWindow = new ContactDetailsWindow();
 
-                    if (vm.IsDirty)  // == true && contactDetailsWindow.DialogResult == true)
-                    {
-                        ReadDatabase();
-                    }
-                }
+                //if (contactDetailsWindow.DataContext is ContactDetailsWindowViewModel vm)
+                //{
+                //    vm.Id = selectedContact.Id;
+                //    vm.Name = selectedContact.Name;
+                //    vm.Email = selectedContact.Email;
+                //    vm.Phone = selectedContact.Phone;
+
+                //    vm.IsDirty = false;
+
+                //    contactDetailsWindow.ShowDialog();
+
+                //    if (vm.IsDirty)  // == true && contactDetailsWindow.DialogResult == true)
+                //    {
+                //        ReadDatabase();
+                //    }
+                //}
             }
         }
 

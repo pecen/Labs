@@ -8,6 +8,6 @@ namespace DesktopContactsApp.Services
 {
     public interface IDialogService
     {
-        void ShowDialog<TViewModel>(Action<string> callback);
+        void ShowDialog<TViewModel>(Action<string> callback, object vm = null);
     }
 }

@@ -2,16 +2,19 @@
 using DesktopContactsApp.Core.MVVM;
 using DesktopContactsApp.Services;
 using DesktopContactsApp.UI.WpfService.Models;
+using DesktopContactsApp.UI.WpfService.MVVM.UserControls;
 using DesktopContactsApp.UI.WpfService.MVVM.Views;
 using SQLite;
+using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
 {
     public class ContactDetailsWindowViewModel : ViewModelBase
     {
-        public DelegateCommand<Window> UpdateContactCommand { get; set; }
-        public DelegateCommand<Window> DeleteContactCommand { get; set; }
+        public DelegateCommand<UserControl> UpdateContactCommand { get; set; }
+        public DelegateCommand<UserControl> DeleteContactCommand { get; set; }
 
         #region Properties
 
@@ -65,7 +68,7 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
         {
             Title = "Contact Details";
 
-            UpdateContactCommand = new DelegateCommand<Window>(UpdateContact,
+            UpdateContactCommand = new DelegateCommand<UserControl>(UpdateContact,
                 o =>
                 {
                     return IsDirty
@@ -73,38 +76,53 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
                         && !string.IsNullOrEmpty(Email)
                         && !string.IsNullOrEmpty(Phone);
                 });
-            DeleteContactCommand = new DelegateCommand<Window>(DeleteContact,
+            //UpdateContactCommand = new DelegateCommand<UserControl>(UpdateContact, CanUpdate);
+            DeleteContactCommand = new DelegateCommand<UserControl>(DeleteContact,
                 o =>
                 {
                     return !string.IsNullOrEmpty(Name)
                         || !string.IsNullOrEmpty(Email)
                         || !string.IsNullOrEmpty(Phone);
                 });
+
+            IsDirty = false;
         }
 
-        private void DeleteContact(Window window)
+        //private bool CanUpdate(UserControl control)
+        //{
+        //    if (control is ContactEditControl contactEditControl)
+        //    {
+        //        return Name != contactEditControl.nameTextBox.Text
+        //            || Email != contactEditControl.emailTextBox.Text
+        //            || Phone != contactEditControl.phoneNumberTextBox.Text;
+        //    }
+
+        //    return false;
+        //}
+
+        private void DeleteContact(UserControl window)
         {
-            if (window is ContactDetailsWindow dialogWindow)
-            {
-                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
-                {
-                    connection.CreateTable<Contact>();
-                    int rows = connection.Delete(Contact);
+            //if (window is ContactDetailsWindow dialogWindow)
+            //{
+            //    using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+            //    {
+            //        connection.CreateTable<Contact>();
+            //        int rows = connection.Delete(Contact);
 
-                    if (rows == 1)
-                    {
-                        dialogWindow.GetViewModel<ContactDetailsWindowViewModel>().IsDirty = true;
-                    }
-                }
+            //        if (rows == 1)
+            //        {
+            //            dialogWindow.GetViewModel<ContactDetailsWindowViewModel>().IsDirty = true;
+            //        }
+            //    }
 
-                dialogWindow.DialogResult = true;
-            }
+            //    dialogWindow.DialogResult = true;
+            //}
         }
 
-        private void UpdateContact(Window window)
+        private void UpdateContact(UserControl window)
         {
-            if (window is ContactDetailsWindow dialogWindow)
-            {
+            //if (window is ContactDetailsWindow dialogWindow)
+            //{
                 if (!IsDirty)
                 {
                     return;
@@ -115,9 +133,9 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
                     connection.CreateTable<Contact>();
                     int rows = connection.Update(Contact);
                 }
-
-                dialogWindow.DialogResult = true;
-            }
+                
+                //dialogWindow.DialogResult = true;
+            //}
         }
     }
 }
