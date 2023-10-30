@@ -4,12 +4,13 @@ using DesktopContactsApp.UI.WpfService.Models;
 using DesktopContactsApp.UI.WpfService.MVVM.Views;
 using SQLite;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
 {
     public class NewContactWindowViewModel : ViewModelBase
     {
-        public DelegateCommand<Window> SaveContactCommand { get; set; }
+        public DelegateCommand SaveContactCommand { get; set; }
 
         #region Properties
 
@@ -47,8 +48,8 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
         {
             Title = "New Contact";
 
-            SaveContactCommand = new DelegateCommand<Window>(SaveContact,
-                o =>
+            SaveContactCommand = new DelegateCommand(SaveContact,
+                () =>
                 {
                     return !string.IsNullOrEmpty(Name)
                         && !string.IsNullOrEmpty(Email)
@@ -56,34 +57,34 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
                 });
         }
 
-        private void SaveContact(Window window)
+        private void SaveContact()
         {
             //if (window is NewContactWindow dialogWindow)
             //{
             //    if (dialogWindow.contactEditControl is ContactEditControl)
             //    {
-            //        Contact contact = new Contact()
-            //        {
-            //            Name = Name,
-            //            Email = Email,
-            //            Phone = Phone
-            //        };
+                    Contact contact = new Contact()
+                    {
+                        Name = Name,
+                        Email = Email,
+                        Phone = Phone
+                    };
 
-            //        using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
-            //        {
-            //            connection.CreateTable<Contact>();
-            //            var i = connection.Insert(contact);
+                    using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                    {
+                        connection.CreateTable<Contact>();
+                        var i = connection.Insert(contact);
 
-            //            if (i == 1)
-            //            {
-            //                Id = contact.Id;
-            //                dialogWindow.DialogResult = true;
-            //            }
-            //            else
-            //            {
-            //                dialogWindow.DialogResult = false;
-            //            }
-            //        }
+                        if (i == 1)
+                        {
+                            Id = contact.Id;
+                            //dialogWindow.DialogResult = true;
+                        }
+                        else
+                        {
+                            //dialogWindow.DialogResult = false;
+                        }
+                    }
             //    }
             //}
         }

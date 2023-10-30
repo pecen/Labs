@@ -1,5 +1,4 @@
-﻿using DesktopContactsApp.Core.Extensions;
-using DesktopContactsApp.Services;
+﻿using DesktopContactsApp.Services;
 using DesktopContactsApp.UI.WpfService.Models;
 using DesktopContactsApp.UI.WpfService.MVVM.ViewModels;
 using DesktopContactsApp.UI.WpfService.MVVM.Views;

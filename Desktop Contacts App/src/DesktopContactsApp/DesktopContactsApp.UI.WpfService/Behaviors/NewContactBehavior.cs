@@ -1,4 +1,4 @@
-﻿using DesktopContactsApp.Core.Extensions;
+﻿using DesktopContactsApp.Services;
 using DesktopContactsApp.UI.WpfService.MVVM.ViewModels;
 using DesktopContactsApp.UI.WpfService.MVVM.Views;
 using Microsoft.Xaml.Behaviors;
@@ -9,6 +9,8 @@ namespace DesktopContactsApp.UI.WpfService.Behaviors
 {
     public class NewContactBehavior : Behavior<Button>
     {
+        private readonly IDialogService _dialogService = new DialogService();
+
         protected override void OnAttached()
         {
             base.OnAttached();
@@ -23,13 +25,23 @@ namespace DesktopContactsApp.UI.WpfService.Behaviors
 
                 //if (mainWindow != null)
                 //{
-                //    NewContactWindow newContactWindow = new NewContactWindow();
-                //    newContactWindow.ShowDialog();
+                    _dialogService.ShowDialog<NewContactWindowViewModel>(result =>
+                    {
+                        var dialogResult = result;
+                        
+                        //if(dialogResult != null)
+                        //{
+                        //    associatedListView.GetViewModel<MainWindowViewModel>().ReadDatabase();
+                        //}
+                    });
 
-                //    if (newContactWindow.DialogResult == true)
-                //    {
-                //        mainWindow.GetViewModel<MainWindowViewModel>().ReadDatabase();
-                //    }
+                    //NewContactWindow newContactWindow = new NewContactWindow();
+                    //newContactWindow.ShowDialog();
+
+                    //if (newContactWindow.DialogResult == true)
+                    //{
+                    //    mainWindow.GetViewModel<MainWindowViewModel>().ReadDatabase();
+                    //}
                 //}
             }
         }

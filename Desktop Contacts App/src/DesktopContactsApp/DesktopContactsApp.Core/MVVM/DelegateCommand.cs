@@ -3,10 +3,38 @@ using System.Windows.Input;
 
 namespace DesktopContactsApp.Core.MVVM
 {
-    public class RelayCommand : ICommand
+    //public class RelayCommand : ICommand
+    //{
+    //    private Action<object> _execute;
+    //    private Func<object, bool> _canExecute;
+
+    //    public event EventHandler CanExecuteChanged
+    //    {
+    //        add { CommandManager.RequerySuggested += value; }
+    //        remove { CommandManager.RequerySuggested -= value; }
+    //    }
+
+    //    public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+    //    {
+    //        _execute = execute;
+    //        _canExecute = canExecute;
+    //    }
+
+    //    public bool CanExecute(object parameter)
+    //    {
+    //        return _canExecute == null || _canExecute(parameter);
+    //    }
+
+    //    public void Execute(object parameter)
+    //    {
+    //        _execute(parameter);
+    //    }
+    //}
+
+    public class DelegateCommand : ICommand
     {
-        private Action<object> _execute;
-        private Func<object, bool> _canExecute;
+        private readonly Func<bool> _canExecute;
+        private readonly Action _execute;
 
         public event EventHandler CanExecuteChanged
         {
@@ -14,20 +42,41 @@ namespace DesktopContactsApp.Core.MVVM
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public DelegateCommand(Action executeMethod)
+           //: this(executeMethod, null)
+           : this(executeMethod, () => true)
         {
-            _execute = execute;
-            _canExecute = canExecute;
+            _execute = executeMethod;
+        }
+
+        public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod)
+        {
+            if (executeMethod == null)
+            {
+                throw new ArgumentNullException("execute");
+            }
+            _execute = executeMethod;
+            _canExecute = canExecuteMethod;
+        }
+
+        public bool CanExecute()
+        {
+            return _canExecute();
+        }
+
+        public void Execute()
+        {
+            _execute();
         }
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null || _canExecute(parameter);
+            return CanExecute();
         }
 
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            Execute();
         }
     }
 

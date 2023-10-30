@@ -1,9 +1,11 @@
 ﻿using DesktopContactsApp.Core.Extensions;
 using DesktopContactsApp.Core.MVVM;
 using DesktopContactsApp.Services;
+using DesktopContactsApp.Services.Views;
 using DesktopContactsApp.UI.WpfService.Models;
 using DesktopContactsApp.UI.WpfService.MVVM.UserControls;
 using DesktopContactsApp.UI.WpfService.MVVM.Views;
+using MahApps.Metro.Controls;
 using SQLite;
 using System;
 using System.Windows;
@@ -119,10 +121,10 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
             //}
         }
 
-        private void UpdateContact(UserControl window)
+        private void UpdateContact(UserControl uc)
         {
-            //if (window is ContactDetailsWindow dialogWindow)
-            //{
+            if (uc is ContactEditControl control)
+            {
                 if (!IsDirty)
                 {
                     return;
@@ -133,9 +135,11 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
                     connection.CreateTable<Contact>();
                     int rows = connection.Update(Contact);
                 }
+
+                var dialogWindow = control.FindParent<DialogWindowBase>();
                 
-                //dialogWindow.DialogResult = true;
-            //}
+                dialogWindow.DialogResult = true;
+            }
         }
     }
 }

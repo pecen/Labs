@@ -1,4 +1,5 @@
 ﻿using DesktopContactsApp.Services.Views;
+using DesktopContactsApp.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,7 +75,7 @@ namespace DesktopContactsApp.Services
             };
 
             dialog.Closed += closeEventHandler;
-            dialog.Closing += Dialog_Closed;
+            //dialog.Closing += Dialog_Closed;
 
             //var type = Type.GetType($"DialogsInMvvm.{name}");
 
@@ -83,6 +84,9 @@ namespace DesktopContactsApp.Services
             if (vmType != null)
             {
                 var vm = viewModel != null ? viewModel : Activator.CreateInstance(vmType);
+                //var propInfo = vm.GetType().GetProperty("Title");
+                //var itemValue = propInfo.GetValue(vm, null);
+                dialog.Title = vm.GetPropertyValue("Title").ToString();
                 (content as FrameworkElement).DataContext = vm;
             }
 

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{674C8A8E-31B4-4920-A54B-FB177C9CE121}</ProjectGuid>
+    <ProjectGuid>{555CEF41-6A39-4FCF-BCE1-AACEB2E08BC8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DesktopContactsApp.Core</RootNamespace>
-    <AssemblyName>DesktopContactsApp.Core</AssemblyName>
+    <RootNamespace>DesktopContactsApp.Utilities</RootNamespace>
+    <AssemblyName>DesktopContactsApp.Utilities</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -44,12 +44,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\DependencyObjectExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="MVVM\BindableBase.cs" />
-    <Compile Include="MVVM\DelegateCommand.cs" />
-    <Compile Include="MVVM\ViewModelBase.cs" />
+    <Compile Include="Helpers\ViewModelHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DesktopContactsApp.Services\DesktopContactsApp.Services.csproj">
+      <Project>{0F8ADD72-8E25-45CE-9D00-5ECAA1DB0957}</Project>
+      <Name>DesktopContactsApp.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

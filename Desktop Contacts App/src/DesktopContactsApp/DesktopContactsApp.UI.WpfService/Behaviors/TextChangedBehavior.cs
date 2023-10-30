@@ -5,6 +5,7 @@ using DesktopContactsApp.Core.Extensions;
 using System.Linq;
 using DesktopContactsApp.UI.WpfService.MVVM.Views;
 using DesktopContactsApp.UI.WpfService.MVVM.ViewModels;
+using DesktopContactsApp.Utilities.Helpers;
 
 namespace DesktopContactsApp.UI.WpfService.Behaviors
 {

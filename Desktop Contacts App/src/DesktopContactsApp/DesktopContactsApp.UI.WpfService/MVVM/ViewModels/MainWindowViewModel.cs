@@ -5,8 +5,9 @@ using DesktopContactsApp.UI.WpfService.Models;
 // This is totally wrong since a VM should not know about its View
 // This is just for demonstrating purposes
 using DesktopContactsApp.UI.WpfService.MVVM.Views;
-
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 
 namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
@@ -18,6 +19,8 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
         #region Commands
 
         public DelegateCommand<Contact> ShowContactDetailsCommand { get; set; }
+        public DelegateCommand LaunchGitHubSiteCommand { get; set; }
+        public DelegateCommand DeployCupCakesCommand { get; set; }
 
         #endregion
 
@@ -39,8 +42,21 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
             _dialogService = new DialogService();
 
             ShowContactDetailsCommand = new DelegateCommand<Contact>(ShowContactDetails);      //   o => { CurrentView = ContactDetailsWindowVM; });
+            LaunchGitHubSiteCommand = new DelegateCommand(LaunchGitHubSite);
+            DeployCupCakesCommand = new DelegateCommand(DeployCupCakes);
 
             ReadDatabase();
+        }
+
+        private void DeployCupCakes()
+        {
+            //Process.Start("https://www.bbcgoodfood.com/recipes/cupcakes");
+            Process.Start("https://vapiano.se");
+        }
+
+        private void LaunchGitHubSite()
+        {
+            Process.Start("https://www.github.com");
         }
 
         private void ShowContactDetails(Contact contact)
