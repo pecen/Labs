@@ -1,11 +1,6 @@
 ﻿using DesktopContactsApp.Core.MVVM;
 using DesktopContactsApp.Services;
 using DesktopContactsApp.UI.WpfService.Models;
-
-// This is totally wrong since a VM should not know about its View
-// This is just for demonstrating purposes
-using DesktopContactsApp.UI.WpfService.MVVM.Views;
-using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;

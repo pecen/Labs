@@ -6,6 +6,7 @@ using Microsoft.Xaml.Behaviors;
 using SQLite;
 using System.Windows;
 using System.Windows.Controls;
+using DesktopContactsApp.Utilities.Helpers;
 
 namespace DesktopContactsApp.UI.WpfService.Behaviors
 {
@@ -40,10 +41,10 @@ namespace DesktopContactsApp.UI.WpfService.Behaviors
                     {
                         var dialogResult = result;
 
-                        //if(dialogResult != null)
-                        //{
-                        //    associatedListView.GetViewModel<MainWindowViewModel>().ReadDatabase();
-                        //}
+                        if (dialogResult == "True")
+                        {
+                            associatedListView.GetViewModel<MainWindowViewModel>().ReadDatabase();
+                        }
                     }, 
                     vm);
                 }

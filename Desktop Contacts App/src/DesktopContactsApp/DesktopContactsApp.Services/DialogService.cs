@@ -1,5 +1,6 @@
 ﻿using DesktopContactsApp.Services.Views;
 using DesktopContactsApp.Utilities.Extensions;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,6 +94,7 @@ namespace DesktopContactsApp.Services
             dialog.Content = content;
             //dialog.xContent.Content = content;
 
+            //dialog.ShowMessageAsync("Details", "Just testing");
             dialog.ShowDialog();
         }
 

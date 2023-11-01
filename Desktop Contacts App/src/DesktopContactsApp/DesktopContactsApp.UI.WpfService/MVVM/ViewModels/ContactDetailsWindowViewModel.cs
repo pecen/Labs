@@ -8,6 +8,7 @@ using DesktopContactsApp.UI.WpfService.MVVM.Views;
 using MahApps.Metro.Controls;
 using SQLite;
 using System;
+//using System.Web.UI;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -102,23 +103,24 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
         //    return false;
         //}
 
-        private void DeleteContact(UserControl window)
+        private void DeleteContact(UserControl uc)
         {
-            //if (window is ContactDetailsWindow dialogWindow)
-            //{
-            //    using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
-            //    {
-            //        connection.CreateTable<Contact>();
-            //        int rows = connection.Delete(Contact);
+            if (uc is ContactEditControl control)
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
+                {
+                    connection.CreateTable<Contact>();
+                    int rows = connection.Delete(Contact);
 
-            //        if (rows == 1)
-            //        {
-            //            dialogWindow.GetViewModel<ContactDetailsWindowViewModel>().IsDirty = true;
-            //        }
-            //    }
+                    //if (rows == 1)
+                    //{
+                    //    var dialogWindow = control.FindParent<DialogWindowBase>();
+                    //    dialogWindow.GetViewModel<ContactDetailsWindowViewModel>().IsDirty = true;
+                    //}
+                }
 
-            //    dialogWindow.DialogResult = true;
-            //}
+                //dialogWindow.DialogResult = true;
+            }
         }
 
         private void UpdateContact(UserControl uc)
@@ -136,9 +138,9 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
                     int rows = connection.Update(Contact);
                 }
 
-                var dialogWindow = control.FindParent<DialogWindowBase>();
-                
-                dialogWindow.DialogResult = true;
+                //var dialogWindow = control.FindParent<DialogWindowBase>();
+
+                //dialogWindow.DialogResult = true;
             }
         }
     }
