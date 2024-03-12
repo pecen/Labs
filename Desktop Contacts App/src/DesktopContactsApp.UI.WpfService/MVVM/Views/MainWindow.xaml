@@ -14,7 +14,7 @@
     Width="525"
     Height="350"
     Closing="MetroWindow_Closing"
-    ResizeMode="CanMinimize"
+    ResizeMode="CanResize"
     WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainWindowViewModel />

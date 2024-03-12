@@ -48,12 +48,12 @@ namespace DesktopContactsApp.UI.WpfMVVM.MVVM.ViewModels
             Title = "New Contact";
 
             SaveContactCommand = new DelegateCommand<Window>(SaveContact,
-                o =>
-                {
-                    return !string.IsNullOrEmpty(Name)
-                        && !string.IsNullOrEmpty(Email)
-                        && !string.IsNullOrEmpty(Phone);
-                });
+            o =>
+            {
+                return !string.IsNullOrEmpty(Name)
+                    && !string.IsNullOrEmpty(Email)
+                    && !string.IsNullOrEmpty(Phone);
+            });
         }
 
         private void SaveContact(Window window)

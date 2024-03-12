@@ -38,12 +38,12 @@ namespace DesktopContactsApp.UI.WpfService.MVVM.ViewModels
 
             ShowContactDetailsCommand = new DelegateCommand<Contact>(ShowContactDetails);      //   o => { CurrentView = ContactDetailsWindowVM; });
             LaunchGitHubSiteCommand = new DelegateCommand(LaunchGitHubSite);
-            DeployCupCakesCommand = new DelegateCommand(DeployCupCakes);
+            DeployCupCakesCommand = new DelegateCommand(GetPasta);
 
             ReadDatabase();
         }
 
-        private void DeployCupCakes()
+        private void GetPasta()
         {
             //Process.Start("https://www.bbcgoodfood.com/recipes/cupcakes");
             Process.Start("https://vapiano.se");
